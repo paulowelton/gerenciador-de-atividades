@@ -20,10 +20,8 @@ function App(){
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        "id": Date.now().toString(),
         "title": title,
         "description": description,
-        "status": "Em andamento"
       })
     })
     .then(response => response.json())

@@ -13,3 +13,11 @@ def insert_task(item):
 
     with open(DATA_PATH, "w") as data:
         json.dump(tasks, data)
+        
+def delete_task(id):
+    tasks = list_tasks()
+    
+    tasks_filtered = [task for task in tasks if task["id"] != id]
+    
+    with open(DATA_PATH, "w") as data:
+        json.dump(tasks_filtered, data)

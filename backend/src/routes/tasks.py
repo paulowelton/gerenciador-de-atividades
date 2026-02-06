@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from src.models.task import Task
 from src.services.task_service import list_tasks
 from src.services.task_service import insert_task
+from src.services.task_service import delete_task
 
 router = APIRouter()
 
@@ -13,3 +14,8 @@ def list_tasks_view():
 def insert_task_view(task: Task):
     insert_task(task)
     return {"message": "Tarefa foi inserida com sucesso!"}
+
+@router.delete("/{task_id}")
+def delete_task_view(task_id: str):
+    delete_task(task_id)
+    return {"message": "Tarefa deletada com sucesso!"}
