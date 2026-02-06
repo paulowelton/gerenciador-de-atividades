@@ -1,18 +1,66 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // Adicionei o useNavigate para o botão voltar
 import { useTasks } from "../../context/TaskContext";
 
 function TaskDetails() {
   const { id } = useParams();
-  const { tasks } = useTasks();
+  const { tasks, deleteTask } = useTasks();
+  const navigate = useNavigate();
 
-  const task = tasks.find(t => t.id === Number(id));
+  const task = tasks.find(task => task.id === id);
 
-  if (!task) return <p>Task não encontrada</p>;
+  function removeTask(id){
+    deleteTask(id)
+
+    navigate("/")
+  }
+
+  if (!task) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[50vh] text-gray-500">
+        <p className="text-xl font-semibold">Task não encontrada</p>
+        <button onClick={() => navigate(-1)} className="mt-4 text-[#f4861f] hover:underline">
+          Voltar para a lista
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <h2>{task.title}</h2>
-      <p>{task.description}</p>
+    <div className="w-screen h-screen bg-slate-100 flex flex-col justify-center items-center">
+      <button onClick={() => navigate("/")} className="mb-6 flex text-gray-500 hover:text-[#f4861f] transition-colors">
+        Voltar
+      </button>
+
+      <div className="bg-white rounded-xl shadow-lg border-l-8 border-[#f4861f] overflow-hidden w-[60%]">
+        <div className="p-8">
+          <div className="flex justify-between items-start mb-6">
+            <h2 className="text-3xl font-extrabold text-gray-900">
+              {task.title}
+            </h2>
+            <span className="px-3 py-1 text-xs font-bold uppercase rounded-full bg-orange-100 text-[#f4861f]">
+              {task.status}
+            </span>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold uppercase text-gray-400 tracking-widest">
+              Descrição
+            </h3>
+            <p className="text-lg text-gray-700 leading-relaxed bg-gray-50 p-4 rounded-lg border border-gray-100">
+              {task.description}
+            </p>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-gray-100 flex gap-3">
+             <button className="bg-[#f4861f] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#d67216] transition-all shadow-md">
+                Editar Tarefa
+             </button>
+             <button onClick={() => removeTask(task.id)} className="bg-red-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-red-600 transition-all shadow-md">
+                deletar Tarefa
+             </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

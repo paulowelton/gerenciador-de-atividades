@@ -5,7 +5,9 @@ function InsertTask({ insertTask }) {
     const [description, setDescription] = useState("");
     
     function handleInsertTask(){
-        if (!title || !description) return;
+        if (!title || !description){
+            return
+        }
 
         insertTask({
             title,
