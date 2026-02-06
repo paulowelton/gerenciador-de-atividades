@@ -1,9 +1,11 @@
-function ListTasks({ tasks, removeTask }) {
+import { Link } from "react-router-dom";
+
+function ListTasks({ tasks, removeTask}) {
     return (
       <div>
         <table className="min-w-full table-auto border-collapse">
-          <thead>
-            <tr className="bg-[#f4861f] text-white text-left">
+          <thead className="bg-[#f4861f]">
+            <tr className="text-white text-left">
               <th className="px-4 py-3 font-semibold text-center">Título</th>
               <th className="px-4 py-3 font-semibold text-center">Status</th>
               <th className="px-4 py-3 font-semibold text-center">Visualizar</th>
@@ -21,17 +23,19 @@ function ListTasks({ tasks, removeTask }) {
                   </span>
                 </td>
                 <td className="px-4 py-3 text-center">
-                  <button className="bg-[#f4861f] hover:bg-[#d67216] text-white px-4 py-1 rounded shadow-sm transition-all text-sm">
-                    Visualizar
+                  <button className="cursor-pointer bg-[#f4861f] hover:bg-[#d67216] text-white px-4 py-1 rounded shadow-sm transition-all text-sm">
+                    <Link to={`/task/${task.id}`}>
+                      Visualizar
+                    </Link>
                   </button>
                 </td>
                 <td className="px-4 py-3 text-center">
-                  <button className="bg-[#f4861f] hover:bg-[#d67216] text-white px-4 py-1 rounded shadow-sm transition-all text-sm">
+                  <button className="cursor-pointer bg-[#f4861f] hover:bg-[#d67216] text-white px-4 py-1 rounded shadow-sm transition-all text-sm">
                     Atualizar
                   </button>
                 </td>
                 <td className="px-4 py-3 text-center">
-                  <button onClick={() => removeTask(task.id)} className="text-red-500 hover:text-red-700 font-medium text-sm transition-colors">
+                  <button onClick={() => removeTask(task.id)} className="cursor-pointer text-red-500 hover:text-red-700 font-medium text-sm transition-colors">
                     Deletar
                   </button>
                 </td>
