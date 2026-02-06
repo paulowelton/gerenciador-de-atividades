@@ -1,5 +1,5 @@
 import Home from './pages/home/Home'
-import TaskDetails from './pages/TaskDetails/TaskDetaisls';
+import TaskDetails from './pages/TaskDetails/TaskDetails';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App(){
