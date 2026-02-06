@@ -1,9 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom"; // Adicionei o useNavigate para o botão voltar
 import { useTasks } from "../../context/TaskContext";
+import Swal from "sweetalert2"; 
 
 function TaskDetails() {
   const { id } = useParams();
-  const { tasks, deleteTask } = useTasks();
+  const { tasks, deleteTask, updateTask } = useTasks();
   const navigate = useNavigate();
 
   const task = tasks.find(task => task.id === id);
@@ -12,6 +13,46 @@ function TaskDetails() {
     deleteTask(id)
 
     navigate("/")
+  }
+
+  function changeTask(id){
+    Swal.fire({
+      title: "Editar Task",
+      html: `
+        <input id="title" class="swal2-input" value="${task.title}">
+        <textarea id="description" class="swal2-textarea">${task.description}</textarea>
+        <select id="status" class="swal2-select">
+          <option>Pendente</option>
+          <option>Em andamento</option>
+          <option>Concluido</option>
+        </select>
+      `,
+      showCancelButton: true,
+      confirmButtonText: "Salvar",
+      confirmButtonColor: "#f4861f",
+      showLoaderOnConfirm: true,
+
+      preConfirm: async () => {
+        const title = document.getElementById("title").value;
+        const description = document.getElementById("description").value;
+        const status = document.getElementById("status").value;
+        
+        try {
+          await updateTask(task.id, {
+            title,
+            description,
+            status,
+          });
+        } catch (error) {
+          Swal.showValidationMessage(error.message);
+        }
+      },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          reloadTasks();
+          Swal.fire("Sucesso!", "Task atualizada", "success");
+        }
+    });
   }
 
   if (!task) {
@@ -52,10 +93,10 @@ function TaskDetails() {
           </div>
 
           <div className="mt-8 pt-6 border-t border-gray-100 flex gap-3">
-             <button className="bg-[#f4861f] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#d67216] transition-all shadow-md">
+             <button onClick={() => changeTask(task.id)} className="cursor-pointer bg-[#f4861f] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#d67216] transition-all shadow-md">
                 Editar Tarefa
              </button>
-             <button onClick={() => removeTask(task.id)} className="bg-red-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-red-600 transition-all shadow-md">
+             <button onClick={() => removeTask(task.id)} className="cursor-pointer bg-red-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-red-600 transition-all shadow-md">
                 deletar Tarefa
              </button>
           </div>
