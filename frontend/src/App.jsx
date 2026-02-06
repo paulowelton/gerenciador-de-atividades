@@ -30,6 +30,19 @@ function App(){
     loadTasks()
   }
 
+  function deleteTask(id){
+    fetch(`http://127.0.0.1:8000/tasks/${id}/`, {
+      method: 'DELETE'
+    })
+    .then((response) => {
+      if (response.ok) {
+        loadTasks()
+      }
+    })
+    .catch(error => console.log(error))
+
+  }
+
   useEffect(() => {
     loadTasks()
   }, [])
@@ -38,7 +51,7 @@ function App(){
     <div className="w-screen h-screen bg-slate-100 flex justify-center items-center">
       <div className="w-[60%] rounded-2xl overflow-hidden bg-white shadow-sm">
         <InsertTask insertTask={addTask}/>
-        <ListTasks tasks={tasks}/>
+        <ListTasks tasks={tasks} removeTask={deleteTask}/>
       </div>
     </div>
   )

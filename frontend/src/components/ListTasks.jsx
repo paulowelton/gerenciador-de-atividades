@@ -1,4 +1,4 @@
-function ListTasks({ tasks }) {
+function ListTasks({ tasks, removeTask }) {
     return (
       <div>
         <table className="min-w-full table-auto border-collapse">
@@ -31,7 +31,7 @@ function ListTasks({ tasks }) {
                   </button>
                 </td>
                 <td className="px-4 py-3 text-center">
-                  <button className="text-red-500 hover:text-red-700 font-medium text-sm transition-colors">
+                  <button onClick={() => removeTask(task.id)} className="text-red-500 hover:text-red-700 font-medium text-sm transition-colors">
                     Deletar
                   </button>
                 </td>
