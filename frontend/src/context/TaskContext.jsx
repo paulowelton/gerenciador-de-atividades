@@ -4,6 +4,8 @@ const TaskContext = createContext();
 
 export function TaskProvider({ children }){
   const [tasks, setTasks] = useState([]);
+  const [filterStatus, setFilterStatus] = useState("Todos");
+  const filteredTasks = filterStatus == "Todos" ? tasks : tasks.filter(task => task.status == filterStatus)
 
   async function loadTasks(){
     const res = await fetch("http://127.0.0.1:8000/tasks/");
@@ -40,10 +42,6 @@ export function TaskProvider({ children }){
       })
     })
 
-    const dataa = res.json()
-
-    console.log(dataa)
-
     loadTasks();
   }
 
@@ -55,6 +53,9 @@ export function TaskProvider({ children }){
     <TaskContext.Provider
       value={{
         tasks,
+        filterStatus,
+        filteredTasks,
+        setFilterStatus,
         addTask,
         deleteTask,
         updateTask

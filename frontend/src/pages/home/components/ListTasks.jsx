@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useTasks } from "../../../context/TaskContext";
 
-function ListTasks({ tasks }) {
+function ListTasks() {
+    const { filteredTasks } = useTasks();
+
     return (
       <div>
         <table className="min-w-full table-auto border-collapse">
@@ -13,7 +16,7 @@ function ListTasks({ tasks }) {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {tasks.map((task) => (
+            {filteredTasks.map((task) => (
               <tr key={task.id} className="hover:bg-gray-50 transition-colors">
                 <td className="px-4 py-3 text-gray-700 text-center">{task.title}</td>
                 <td className="max-w-10 truncate px-4 py-3 text-gray-700 text-center">{task.description}</td>

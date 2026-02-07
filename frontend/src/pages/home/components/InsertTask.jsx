@@ -1,15 +1,17 @@
 import { useState } from "react";
+import { useTasks } from "../../../context/TaskContext";
 
-function InsertTask({ insertTask }) {
+function InsertTask() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const { addTask } = useTasks();
     
     function handleInsertTask(){
         if (!title || !description){
             return
         }
 
-        insertTask({
+        addTask({
             title,
             description,
         })
