@@ -1,16 +1,1 @@
-[
-  {
-    "id": "08d2f581-51fe-4ebf-b960-2f4c912f08c8",
-    "title": "lalalalal",
-    "description": "admasldkmasldjnasjdn",
-    "status": "Pendente",
-    "image": "http://127.0.0.1:8000/uploads/676e99ff-7c42-4b2b-bf60-9f0ad2481af4_wallpaperflare.com_wallpaper.jpg"
-  },
-  {
-    "id": "51009cb7-cbf5-43be-8d2f-1d5a9ce29768",
-    "title": "teste",
-    "description": "teste",
-    "status": "Pendente",
-    "image": ""
-  }
-]
+[{"id": "08d2f581-51fe-4ebf-b960-2f4c912f08c8", "title": "lalalalrererreal", "description": "admasldkmasldjnasjdn", "status": "Concluido", "image": "http://127.0.0.1:8000/uploads/676e99ff-7c42-4b2b-bf60-9f0ad2481af4_wallpaperflare.com_wallpaper.jpg"}, {"id": "51009cb7-cbf5-43be-8d2f-1d5a9ce29768", "title": "teste", "description": "teste", "status": "Pendente", "image": ""}]
