@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from src.models.task import Task, TaskUpdate
+from fastapi import Form, File, UploadFile
 from src.services.task_service import list_tasks
 from src.services.task_service import insert_task
 from src.services.task_service import delete_task
@@ -12,8 +13,12 @@ def list_tasks_view():
     return list_tasks()
 
 @router.post("/")
-def insert_task_view(task: Task):
-    insert_task(task)
+def insert_task_view(
+    title: str = Form(...),
+    description: str = Form(...),
+    image: UploadFile = File(None)
+):
+    insert_task(title, description, image)
     return {"message": "Tarefa foi inserida com sucesso!"}
 
 @router.delete("/{task_id}")

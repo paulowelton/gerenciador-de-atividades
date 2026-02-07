@@ -13,12 +13,21 @@ export function TaskProvider({ children }){
     setTasks(data);
   }
 
-  async function addTask({ title, description }){
-    await fetch("http://127.0.0.1:8000/tasks/", {
+  async function addTask({ title, description, image }){
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    if(image){
+      formData.append("image", image);
+    }
+    const res = await fetch("http://127.0.0.1:8000/tasks/", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, description }),
+      body: formData
     });
+
+    console.log(await res.json())
+    
+    console.log(formData)
 
     loadTasks();
   }

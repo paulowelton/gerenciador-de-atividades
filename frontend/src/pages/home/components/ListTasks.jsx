@@ -2,7 +2,13 @@ import { Link } from "react-router-dom";
 import { useTasks } from "../../../context/TaskContext";
 
 function ListTasks() {
-    const { filteredTasks } = useTasks();
+    const { filterStatus, filteredTasks } = useTasks();
+
+    if(filteredTasks == 0){
+      return (
+        <span className="text-center block">Sem dados de status: {filterStatus}...</span>
+      )
+    }
 
     return (
       <div>

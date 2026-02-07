@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom"; // Adicionei o useNavigate para o botão voltar
+import { useParams, useNavigate } from "react-router-dom";
 import { useTasks } from "../../context/TaskContext";
 import Swal from "sweetalert2"; 
 
@@ -91,6 +91,12 @@ function TaskDetails() {
               {task.description}
             </p>
           </div>
+
+          {task.image && (
+            <div className="w-full flex justify-center">
+              <img className="h-[200px]" src={task.image} alt="image" />
+            </div>
+          )}
 
           <div className="mt-8 pt-6 border-t border-gray-100 flex gap-3">
              <button onClick={() => changeTask(task.id)} className="cursor-pointer bg-[#f4861f] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#d67216] transition-all shadow-md">
