@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { useTasks } from "../../../context/TaskContext";
 
 function ListTasks() {
+    // variaveis: filtro e tasks filtradas
     const { filterStatus, filteredTasks } = useTasks();
 
+    // caso nao tenha tasks com o filtro
     if (!filteredTasks || filteredTasks.length === 0) {
       return (
         <span className="text-center block mt-10 text-gray-500 italic">
@@ -13,8 +15,10 @@ function ListTasks() {
     }
 
     return (
+      // tabela que lista todas tarefas
       <div className="w-full overflow-hidden rounded-lg shadow-sm border border-gray-200 mt-4">
         <table className="min-w-full border-collapse block md:table">
+          {/* cabecalho da tabela */}
           <thead className="hidden md:table-header-group bg-[#f4861f]">
             <tr className="text-white text-left">
               <th className="px-4 py-3 font-semibold text-center">Título</th>
@@ -24,6 +28,7 @@ function ListTasks() {
             </tr>
           </thead>
           
+          {/* corpo da tabela sendo 'tr' a linha e 'td' as celulas */}
           <tbody className="block md:table-row-group divide-y divide-gray-200">
             {filteredTasks.map((task) => (
               <tr 

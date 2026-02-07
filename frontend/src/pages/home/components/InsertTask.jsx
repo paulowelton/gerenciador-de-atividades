@@ -2,11 +2,15 @@ import { useState } from "react";
 import { useTasks } from "../../../context/TaskContext";
 
 function InsertTask() {
+    // variaveis que vao ser usadas pra criar uma nova tarefa
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
+
+    // funcao que cria uma nova tarefa
     const { addTask } = useTasks();
     
+    // funcao que valida se todos os campos necessarios estao preenchidos e chama a funcao de criar tarefa
     function handleInsertTask(e){
         e.preventDefault() // isso aqui é pro formulario nao renderizar a pagina
 
@@ -19,16 +23,18 @@ function InsertTask() {
             description,
             image
         })
-
+        
+        //  limpra os campos
         setTitle("");
         setDescription("");
-        setImage("");
+        setImage(null);
     }
 
     return (
         <div>
             <h2 className="text-xl text-center font-bold text-gray-800 mb-4">Adicionar Tarefa</h2>
             
+            {/* formulario que tem os campos para criar a acao */}
             <form onSubmit={handleInsertTask} className="flex flex-col gap-4" >
                 <div>
                 <label className="text-sm font-medium text-gray-700 mb-1">Título</label>

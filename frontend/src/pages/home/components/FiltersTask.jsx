@@ -1,6 +1,7 @@
 import { useTasks } from "../../../context/TaskContext";
 
 function FiltersTask() {
+    // varaveis do context: tasks filtradas, filtro e set do filtros
     const { filteredTasks, filterStatus, setFilterStatus } = useTasks();
 
     // Estilo base para os botões para evitar repetição
@@ -8,12 +9,14 @@ function FiltersTask() {
 
     return (
         <div className="w-full flex flex-col px-4 sm:px-0">
+            {/* nome do filtro */}
             <div className="flex justify-center items-center gap-2 mt-6">
                 <h1 className="text-xl sm:text-2xl font-bold uppercase tracking-wide">
                     {filterStatus}
                 </h1>
             </div>
             
+            {/* botoes que setam um novo filtro na variavel filtro que fica no context e as quantidades */}
             <div className="py-4 flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
                 
                 <div className="flex flex-wrap justify-center sm:justify-start gap-2">
