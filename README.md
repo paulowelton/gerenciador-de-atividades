@@ -55,3 +55,26 @@ Inicie o servidor
 ```bash
 npm run dev
 ```
+
+## Rodando os testes
+
+### Frontend
+Entre na pasta frontend:
+```bash
+cd frontend
+```
+Execute os teste:
+```bash
+npm run test
+```
+
+### Backend
+Entre na pasta backend
+```bash
+cd backend
+```
+Execute os testes:
+```bash
+pytest
+```
+OBS: para os testes que precisam de ids deve-se passar um id valido que esteja na base de dados
