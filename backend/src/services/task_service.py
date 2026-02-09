@@ -2,9 +2,10 @@ import json
 import uuid
 from pathlib import Path
 
-DATA_PATH = Path("src/data/data.json")
-UPLOAD_PATH = Path("src/uploads")
-UPLOAD_PATH.mkdir(exist_ok=True)
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_PATH = BASE_DIR / "data" / "data.json"
+UPLOAD_PATH = BASE_DIR / "uploads"
+UPLOAD_PATH.mkdir(exist_ok=True, parents=True)
 
 def list_tasks():
     with open(DATA_PATH, "r", encoding="utf-8") as data:
