@@ -1,23 +1,23 @@
-# gerenciador-de-atividades
-Aplicação feita para gerenciar atividades. Nessa aplicação o usuário pode inserir, ver, atualizar e apagar ativiades. Cada atividade contendo titulo descrição e  status (pendente, em andamento e concluido). O projeto vai ser construido em React (Frontend) e FastApi (Backend).
+# task manager
+This application is designed to manage activities. Users can add, view, update, and delete activities. Each activity includes a title, description, and status (pending, in progress, and completed). The project will be built using React (frontend) and FastAPI (backend).
 
-O projeto é composto por:
-- Frontend em React + Tailwind CSS
-- Backend em FastAPI
-- Persistência de dados em JSON
+The project consists of:
+- Frontend in React + Tailwind CSS
+- Backend in FastAPI
+- Data persistence in JSON
 
-## Funcionalidades
-- Criar tarefas
-- Listar tarefas
-- Atualizar tarefas
-- Remover tarefas
-- Upload de imagem por tarefa
-- Filtro por status
-- Interface responsiva
+## Features
+- Create tasks
+- List tasks
+- Update tasks
+- Remove tasks
+- Upload images per task
+- Filter by status
+- Responsive interface
 
-## Como rodar a aplicação
+## how to run
 ### backend:
-Crie um ambiente virtual com o venv e o ative
+make a virtual environment
 ```bash
 python -m venv .venv
 ```
@@ -29,52 +29,51 @@ Windows:
 ```bash
 .venv/Scripts/activate
 ```
-Vá para a pasta de backend
+go to backend directory
 ```bash
 cd backend
 ```
-Intale todas as bibliotecas necessarias que estao no requirements.txt
+install all libs in requirements.txt
 ```bash
 pip install -r requirements.txt
 ```
-Inicie o servidor
+start the server
 ```bash
 fastapi dev app.py
 ```
 
 ### frontend:
-Entre na pasta frontend
+go to frontend directory
 ```bash
 cd frontend
 ```
-Instale as bibliotecas necessarias com o NPM
+install all libs using NPM
 ```bash
 npm install
 ```
-Inicie o servidor
+start tehe server
 ```bash
 npm run dev
 ```
 
-## Rodando os testes
+## run tests
 
 ### Frontend
-Entre na pasta frontend:
+go to frontend directory
 ```bash
 cd frontend
 ```
-Execute os teste:
+run the tests:
 ```bash
 npm run test
 ```
 
 ### Backend
-Entre na pasta backend
+go to backend directory
 ```bash
 cd backend
 ```
-Execute os testes:
+run tests:
 ```bash
 pytest
 ```
-OBS: para os testes que precisam de ids deve-se passar um id valido que esteja na base de dados
